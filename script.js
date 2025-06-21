@@ -1,3 +1,6 @@
+// Vega AI Landing Page - JavaScript Functionality
+// Main JavaScript file handling interactions and animations
+
 // Tailwind CSS Configuration
 tailwind.config = {
   theme: {
@@ -59,23 +62,8 @@ tailwind.config = {
   }
 }
 
-// Enhanced JavaScript functionality
+// DOM Ready Handler - Initialize all functionality when page loads
 document.addEventListener('DOMContentLoaded', function() {
-  // Generate enhanced star field with varying sizes and depths
-  const starField = document.getElementById('starField');
-  const starCount = 100;
-  const starSizes = ['small', 'medium', 'large'];
-
-  for (let i = 0; i < starCount; i++) {
-    const star = document.createElement('span');
-    const size = starSizes[Math.floor(Math.random() * starSizes.length)];
-    star.className = `star ${size}`;
-    star.style.top = Math.random() * 100 + '%';
-    star.style.left = Math.random() * 100 + '%';
-    star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
-    star.style.animationDelay = Math.random() * 5 + 's';
-    starField.appendChild(star);
-  }
 
   // Mobile menu functionality
   const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -127,31 +115,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Enhanced scroll effects
+  // Enhanced scroll effects with navigation state
   const nav = document.querySelector('nav');
   let lastScroll = 0;
 
-  window.addEventListener('scroll', function() {
+  function handleScroll() {
     const currentScroll = window.pageYOffset;
 
-    // Add enhanced shadow on scroll
-    if (currentScroll > 50) {
-      nav.style.boxShadow = '0 10px 30px -10px rgba(0, 0, 0, 0.5)';
-    } else {
-      nav.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)';
-    }
+    // Add scrolled class for enhanced styling
+    nav.classList.toggle('scrolled', currentScroll > 50);
 
-    // Hide/show nav on scroll (mobile)
+    // Hide/show nav on scroll (mobile) with smoother animation
     if (window.innerWidth < 768) {
-      if (currentScroll > lastScroll && currentScroll > 100) {
-        nav.style.transform = 'translateY(-100%)';
-      } else {
-        nav.style.transform = 'translateY(0)';
-      }
+      const isScrollingDown = currentScroll > lastScroll && currentScroll > 100;
+      nav.style.transform = isScrollingDown ? 'translateY(-100%)' : 'translateY(0)';
     }
 
     lastScroll = currentScroll;
-  });
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
 
   // Intersection Observer for fade-in animations
   const observerOptions = {
@@ -183,14 +166,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Parallax effect for hero section (desktop only)
-  if (window.innerWidth > 768) {
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const parallax = document.querySelector('.star-field');
-      if (parallax) {
-        parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+  // Add page load animation sequence
+  window.addEventListener('load', function() {
+    document.body.classList.add('loaded');
+    
+    // Trigger entrance animations with delays
+    const animatedElements = document.querySelectorAll('[class*="animate-"]');
+    animatedElements.forEach((el, index) => {
+      if (!el.classList.contains('visible')) {
+        setTimeout(() => {
+          el.style.animationPlayState = 'running';
+        }, index * 50);
       }
     });
-  }
+  });
+
+
 });
