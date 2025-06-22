@@ -12,45 +12,48 @@ on:
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   REGION: us-central1
+  GOOGLE_SPREADSHEET_ID: "1bo_4rjBx-v1pDqB21-L0Pfv8z0c0fAN0S41HF5KAUDI"
+  GOOGLE_SHEET_NAME: "Vega AI Feedback"
+  GCP_SERVICE_ACCOUNT_EMAIL: "vega-feedback-sheets@vega-ai-live.iam.gserviceaccount.com"
 
 jobs:
   deploy:
     name: Deploy API
     runs-on: ubuntu-latest
-    
+
     permissions:
       contents: read
       id-token: write
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
           go-version: '1.24'
           cache-dependency-path: api/go.sum
-      
+
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
-      
+
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
-      
+
       - name: Generate deployment metadata
         id: meta
         run: |
           TIMESTAMP=$(date +%Y%m%d-%H%M%S)
           VERSION="${{ github.sha }}"
-          
+
           echo "timestamp=${TIMESTAMP}" >> $GITHUB_OUTPUT
           echo "version=${VERSION:0:8}" >> $GITHUB_OUTPUT
-      
+
       - name: Deploy Cloud Function
         id: deploy
         run: |
@@ -68,59 +71,62 @@ jobs:
             --max-instances=10 \
             --set-env-vars="ENV=production" \
             --set-env-vars="VERSION=${{ steps.meta.outputs.version }}" \
-            --set-env-vars="DEPLOY_TIME=${{ steps.meta.outputs.timestamp }}"
-          
+            --set-env-vars="DEPLOY_TIME=${{ steps.meta.outputs.timestamp }}" \
+            --set-env-vars="GOOGLE_SPREADSHEET_ID=${{ env.GOOGLE_SPREADSHEET_ID }}" \
+            --set-env-vars="GOOGLE_SHEET_NAME=${{ env.GOOGLE_SHEET_NAME }}" \
+            --service-account="${{ env.GCP_SERVICE_ACCOUNT_EMAIL }}"
+
           # Get function URL
           FUNCTION_URL=$(gcloud functions describe vega-landing-api --region=${{ env.REGION }} --format="value(serviceConfig.uri)")
           echo "function_url=${FUNCTION_URL}" >> $GITHUB_OUTPUT
-      
+
       - name: Verify deployment
         run: |
           echo "Waiting for function to be ready..."
           sleep 15
-          
+
           # Test feedback endpoint
           response=$(curl -s -o /dev/null -w "%{http_code}" -X POST "${{ steps.deploy.outputs.function_url }}?action=feedback" \
             -H "Content-Type: application/json" \
             -d '{"helpfulness":"excellent","source":"ci-test"}' || echo "000")
-          
+
           if [[ "$response" -eq 200 ]]; then
             echo "✅ Feedback endpoint test passed (HTTP $response)"
           else
             echo "❌ Feedback endpoint test failed (HTTP $response)"
             exit 1
           fi
-      
+
       - name: Create deployment summary
         run: |
           cat >> $GITHUB_STEP_SUMMARY << EOF
           ## 🚀 API Deployment Summary
-          
+
           **Function:** vega-landing-api
           **Version:** ${{ steps.meta.outputs.version }}
           **URL:** ${{ steps.deploy.outputs.function_url }}
           **Deployed at:** ${{ steps.meta.outputs.timestamp }}
-          
+
           ### Verification
           - ✅ Function deployed
           - ✅ Endpoint test passed
-          
+
           ### Available Endpoints
           - POST [${{ steps.deploy.outputs.function_url }}?action=feedback](${{ steps.deploy.outputs.function_url }}?action=feedback)
-          
+
           ### Next Steps
           - Monitor logs in [Google Cloud Console](https://console.cloud.google.com/functions/details/${{ env.REGION }}/vega-landing-api?project=${{ env.PROJECT_ID }})
           EOF
-      
+
       - name: Notify on failure
         if: failure()
         run: |
           cat >> $GITHUB_STEP_SUMMARY << EOF
           ## ❌ API Deployment Failed
-          
+
           **Function:** vega-landing-api
           **Version:** ${{ steps.meta.outputs.version }}
           **Timestamp:** ${{ steps.meta.outputs.timestamp }}
-          
+
           Please check the logs above for details.
           EOF
