@@ -1,0 +1,58 @@
+name: Test API
+
+on:
+  push:
+    branches: [main]
+    paths: ['api/**']
+  pull_request:
+    branches: [main]
+    paths: ['api/**']
+
+jobs:
+  test:
+    name: Test API
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Build and test
+        run: |
+          cd api
+          go mod tidy
+          go mod download
+          go vet ./...
+          go test ./... -v -race -coverprofile=coverage.out
+          go tool cover -html=coverage.out -o coverage.html
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: |
+            api/coverage.out
+            api/coverage.html
+
+      - name: Test summary
+        run: |
+          cd api
+          COVERAGE=$(go tool cover -func=coverage.out | grep total | awk '{print $3}')
+          cat >> $GITHUB_STEP_SUMMARY << EOF
+          ## 🧪 Test Results
+
+          **Coverage:** $COVERAGE
+          **Status:** ✅ All tests passed
+
+          ### What was tested:
+          - Feedback API endpoints
+          - Request validation
+          - CORS handling
+          - Action routing
+          EOF
