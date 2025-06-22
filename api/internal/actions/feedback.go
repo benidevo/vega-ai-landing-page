@@ -1,13 +1,17 @@
 package actions
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
+
+	"github.com/benidevo/vega-ai-landing-page/api/internal/resources/google"
 )
 
 // FeedbackRequest represents the structure of feedback submitted by users.
@@ -27,6 +31,26 @@ type FeedbackResponse struct {
 	Message string `json:"message"`
 }
 
+var (
+	sheetsService google.SheetsService
+	sheetsOnce    sync.Once
+)
+
+// initSheetsService initializes the Google Sheets service once
+func initSheetsService() {
+	sheetsOnce.Do(func() {
+		ctx := context.Background()
+		service, err := google.NewGoogleSheetsServiceFromEnv(ctx)
+		if err != nil {
+			log.Printf("WARNING: Google Sheets not configured: %v", err)
+			return
+		}
+
+		sheetsService = service
+		log.Printf("INFO: Google Sheets service initialized successfully")
+	})
+}
+
 func HandleFeedback(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		log.Printf("ERROR: Invalid method %s for feedback endpoint", r.Method)
@@ -34,11 +58,12 @@ func HandleFeedback(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	initSheetsService()
+
 	var req FeedbackRequest
 	contentType := r.Header.Get("Content-Type")
 
 	if strings.Contains(contentType, "application/json") {
-		// Handle JSON request (from manual fetch calls)
 		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 			log.Printf("ERROR: Failed to decode JSON request: %v", err)
 			http.Error(w, "Invalid JSON", http.StatusBadRequest)
@@ -82,7 +107,26 @@ func HandleFeedback(w http.ResponseWriter, r *http.Request) {
 
 	log.Printf("INFO: Processing feedback from source: %s, email: %s", req.Source, req.Email)
 
-	// TODO: Store feedback in Google Sheets
+	if sheetsService != nil {
+		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+		feedbackData := &google.FeedbackData{
+			Helpfulness:        req.Helpfulness,
+			SetupDifficulty:    req.SetupDifficulty,
+			DocsQuality:        req.DocsQuality,
+			SetupIssues:        req.SetupIssues,
+			AdditionalFeedback: req.AdditionalFeedback,
+			Email:              req.Email,
+			Source:             req.Source,
+		}
+		if err := sheetsService.AppendFeedback(ctx, feedbackData); err != nil {
+			log.Printf("ERROR: Failed to store feedback in Google Sheets: %v", err)
+			// continue processing
+		}
+	} else {
+		log.Printf("WARNING: Google Sheets service not available, feedback not stored in sheets")
+	}
+
 	fmt.Printf("Feedback received at %s: %+v\n", time.Now().Format(time.RFC3339), req)
 
 	log.Printf("INFO: Feedback processed successfully")
