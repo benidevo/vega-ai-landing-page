@@ -61,7 +61,7 @@ jobs:
             --region=${{ env.REGION }} \
             --source=. \
             --entry-point=HandleRequest \
-            --trigger=http \
+            --trigger-http \
             --allow-unauthenticated \
             --memory=256MB \
             --timeout=60s \
