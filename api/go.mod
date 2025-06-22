@@ -1,4 +1,4 @@
-module vega.ai/landing-api
+module github.com/benidevo/vega-ai-landing-page/api
 
 go 1.24.2
 
