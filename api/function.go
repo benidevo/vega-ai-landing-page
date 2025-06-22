@@ -1,4 +1,4 @@
-package main
+package function
 
 import (
 	"github.com/GoogleCloudPlatform/functions-framework-go/functions"
