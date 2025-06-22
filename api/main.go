@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/GoogleCloudPlatform/functions-framework-go/functions"
-	"github.com/benidevo/vega-ai-landing-page/api/internal"
+	"github.com/benidevo/vega-ai-landing-page/internal"
 )
 
 func init() {
