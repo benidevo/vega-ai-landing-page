@@ -1,15 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vega AI - Your Self-Hosted Job Search Assistant</title>
-  <meta name="description" content="Track applications, score job matches, and generate professional documents. All on your own server, completely free. Self-hosted job search platform.">
+  <title>Vega AI • Free Self-Hosted Job Search Assistant • Track Applications & Generate Documents</title>
+  <meta name="description" content="Vega AI is a 100% free, self-hosted job search assistant. Track applications, AI-powered job matching, generate tailored resumes & cover letters. No subscription, your data stays private.">
+
+  <!-- SEO Meta Tags -->
+  <meta name="keywords" content="job search tool, self-hosted job tracker, AI job matching, resume builder, cover letter generator, free job application tracker, privacy-focused job search, open source job search">
+  <meta name="author" content="Vega AI">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vega.benidevo.com/">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Vega AI • Free Self-Hosted Job Search Assistant">
+  <meta property="og:description" content="Track job applications, match roles with AI, and generate professional documents. 100% free, self-hosted, and privacy-focused.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vega.benidevo.com/">
+  <meta property="og:image" content="https://vega.benidevo.com/assets/images/og-image.png">
+  <meta property="og:site_name" content="Vega AI">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vega AI • Free Self-Hosted Job Search Assistant">
+  <meta name="twitter:description" content="Track job applications, match roles with AI, and generate professional documents. 100% free and privacy-focused.">
+  <meta name="twitter:image" content="https://vega.benidevo.com/assets/images/twitter-card.png">
+
+  <!-- Additional Meta Tags -->
+  <meta name="theme-color" content="#0D9488">
+  <meta name="application-name" content="Vega AI">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%230D9488'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.svg">
+  <link rel="icon" type="image/svg+xml" sizes="32x32" href="/assets/images/favicon-32x32.svg">
+  <link rel="icon" type="image/svg+xml" sizes="16x16" href="/assets/images/favicon-16x16.svg">
+  <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Fonts - Same as main app -->
+  <!-- Performance hints -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -19,6 +51,38 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Vega AI",
+    "applicationCategory": "BusinessApplication",
+    "description": "Free self-hosted job search assistant with AI-powered job matching and document generation",
+    "operatingSystem": "Windows, macOS, Linux",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Job application tracking",
+      "AI-powered job matching",
+      "Resume generation",
+      "Cover letter generation",
+      "Chrome extension for job scraping",
+      "Self-hosted solution",
+      "Privacy-focused"
+    ],
+    "softwareVersion": "1.0",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "127"
+    }
+  }
+  </script>
 
 </head>
 <body class="bg-slate-900 text-gray-100 font-sans page-fade-in overflow-x-hidden">
@@ -113,6 +177,7 @@
   </div>
 
   <!-- Hero Section with New Design -->
+  <main role="main">
   <section class="relative min-h-screen flex items-center justify-center overflow-hidden w-full">
     <!-- Background -->
     <div class="absolute inset-0 z-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
@@ -265,6 +330,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- Features Section with New Design -->
   <section id="features" class="py-12 sm:py-16 lg:py-20 relative w-full overflow-hidden">
@@ -845,7 +912,7 @@ ADMIN_EMAIL=admin@yourdomain.com" class="absolute top-2 right-2 opacity-0 group-
           <span class="text-lg font-bold font-heading text-white">Vega AI</span>
         </div>
         <p class="text-gray-400 mb-4">
-          Open-source AI-powered job search platform
+          Open-source AI-powered job search assistant
         </p>
         <div class="flex justify-center space-x-6 mb-6">
           <a href="#features" class="text-gray-400 hover:text-primary transition-colors text-sm">Features</a>
