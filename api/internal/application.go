@@ -1,7 +1,7 @@
 package internal
 
 import (
-	"api/internal/actions"
+	"github.com/benidevo/vega-ai-landing-page/api/internal/actions"
 	"log"
 	"net/http"
 	"strings"
