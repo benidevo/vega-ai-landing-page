@@ -24,29 +24,30 @@
 <body class="bg-slate-900 text-gray-100 font-sans page-fade-in overflow-x-hidden">
 
   <!-- Enhanced Navigation with Mobile Menu -->
-  <nav class="fixed top-0 w-full z-50 border-b border-slate-800 transition-all duration-300 bg-slate-900">
+  <nav class="fixed top-0 w-full z-50 border-b border-slate-700/50 transition-all duration-300 bg-slate-900/95 backdrop-blur-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
+      <div class="flex items-center justify-between h-14 sm:h-16">
         <!-- Logo -->
         <div class="flex items-center">
           <a href="#" class="flex items-center group">
             <div class="relative">
               <div class="absolute inset-0 bg-primary/20 blur-xl group-hover:bg-primary/30 transition-all duration-300 rounded-full"></div>
-              <svg class="h-8 w-8 text-primary relative z-10 transform group-hover:scale-110 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-6 w-6 sm:h-7 sm:w-7 text-primary relative z-10 transform group-hover:scale-110 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </div>
-            <span class="ml-2 text-xl font-bold font-heading tracking-tight">Vega AI</span>
+            <span class="ml-2 text-base sm:text-lg font-bold font-heading tracking-tight">Vega AI</span>
           </a>
         </div>
 
         <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center space-x-8">
-          <a href="#features" class="text-gray-300 hover:text-primary transition-colors duration-200 font-medium">Features</a>
-          <a href="#how-it-works" class="text-gray-300 hover:text-primary transition-colors duration-200 font-medium">How It Works</a>
-          <a href="#extension" class="text-gray-300 hover:text-primary transition-colors duration-200 font-medium">Extension</a>
-          <a href="#pricing" class="text-gray-300 hover:text-primary transition-colors duration-200 font-medium">Pricing</a>
-          <a href="https://github.com/benidevo/vega" class="text-gray-300 hover:text-primary transition-colors duration-200 font-medium flex items-center">
+          <a href="#features" class="text-gray-300 hover:text-primary transition-colors duration-200 font-medium text-sm">Features</a>
+          <a href="#how-it-works" class="text-gray-300 hover:text-primary transition-colors duration-200 font-medium text-sm">How It Works</a>
+          <a href="#extension" class="text-gray-300 hover:text-primary transition-colors duration-200 font-medium text-sm">Extension</a>
+          <a href="#pricing" class="text-gray-300 hover:text-primary transition-colors duration-200 font-medium text-sm">Pricing</a>
+          <a href="#faq" class="text-gray-300 hover:text-primary transition-colors duration-200 font-medium text-sm">FAQ</a>
+          <a href="https://github.com/benidevo/vega" class="text-gray-300 hover:text-primary transition-colors duration-200 font-medium flex items-center text-sm">
             <span>GitHub</span>
             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
@@ -55,14 +56,14 @@
         </div>
 
         <!-- CTA and Mobile Menu Button -->
-        <div class="flex items-center space-x-4">
-          <a href="#get-started" class="hidden sm:inline-flex bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-lg font-medium text-sm transition-all duration-200 transform hover:scale-105 btn-primary items-center">
+        <div class="flex items-center space-x-3">
+          <a href="#get-started" class="hidden sm:inline-flex bg-primary hover:bg-primary-dark text-white px-4 sm:px-5 py-2 rounded-lg font-medium text-sm transition-all duration-200 transform hover:scale-105 btn-primary items-center">
             <span class="relative z-10">Get Started</span>
           </a>
 
           <!-- Mobile menu button -->
-          <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg bg-slate-800/80 backdrop-blur-sm hover:bg-slate-700 transition-colors tap-target border border-slate-700">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <button id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-slate-800 transition-colors tap-target">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
@@ -70,42 +71,46 @@
       </div>
     </div>
 
-    <!-- Mobile Navigation Menu -->
-    <div id="mobile-menu" class="mobile-menu fixed inset-0 md:hidden z-[100]">
-      <!-- Backdrop -->
-      <div class="mobile-menu-backdrop absolute inset-0 bg-black/80" onclick="toggleMobileMenu()"></div>
-      <!-- Menu Content -->
-      <div class="mobile-menu-content absolute right-0 top-0 h-full bg-slate-900 w-[280px] max-w-[80vw] shadow-2xl">
-        <div class="flex items-center justify-between p-4 border-b border-slate-800">
-          <span class="text-lg font-heading font-semibold">Menu</span>
-          <button id="mobile-menu-close" class="p-2 rounded-lg hover:bg-slate-800 transition-colors">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
+  </nav>
 
-        <nav class="flex-1 px-4 py-6 space-y-2">
-          <a href="#features" class="block px-4 py-3 text-lg font-medium text-gray-300 hover:text-primary hover:bg-slate-800 rounded-lg transition-all tap-target">Features</a>
-          <a href="#how-it-works" class="block px-4 py-3 text-lg font-medium text-gray-300 hover:text-primary hover:bg-slate-800 rounded-lg transition-all tap-target">How It Works</a>
-          <a href="#extension" class="block px-4 py-3 text-lg font-medium text-gray-300 hover:text-primary hover:bg-slate-800 rounded-lg transition-all tap-target">Browser Extension</a>
-          <a href="#pricing" class="block px-4 py-3 text-lg font-medium text-gray-300 hover:text-primary hover:bg-slate-800 rounded-lg transition-all tap-target">Pricing</a>
-          <a href="https://github.com/benidevo/vega" class="block px-4 py-3 text-lg font-medium text-gray-300 hover:text-primary hover:bg-slate-800 rounded-lg transition-all tap-target">
+  <!-- Mobile Navigation Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <!-- Backdrop -->
+    <div class="mobile-menu-backdrop" onclick="toggleMobileMenu()"></div>
+    <!-- Menu Content -->
+    <div class="mobile-menu-content">
+      <div class="flex items-center justify-between p-4 border-b border-slate-700">
+        <span class="text-base font-heading font-semibold">Menu</span>
+        <button id="mobile-menu-close" class="p-2 rounded-lg hover:bg-slate-800 transition-colors">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <nav class="flex-1 overflow-y-auto">
+        <div class="px-4 py-4 space-y-1">
+          <a href="#features" class="block px-4 py-2.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all">Features</a>
+          <a href="#how-it-works" class="block px-4 py-2.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all">How It Works</a>
+          <a href="#extension" class="block px-4 py-2.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all">Browser Extension</a>
+          <a href="#pricing" class="block px-4 py-2.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all">Pricing</a>
+          <a href="#faq" class="block px-4 py-2.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all">FAQ</a>
+          <a href="https://github.com/benidevo/vega" class="block px-4 py-2.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all">
             GitHub
             <svg class="w-4 h-4 inline ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
             </svg>
           </a>
-        </nav>
-
-        <div class="p-4 border-t border-slate-800">
-          <a href="#get-started" class="block w-full bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-medium text-center transition-all tap-target">
-            Get Started
-          </a>
         </div>
+      </nav>
+
+      <div class="p-4 border-t border-slate-700">
+        <a href="#get-started" class="block w-full bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-medium text-center transition-all">
+          Get Started
+        </a>
       </div>
     </div>
-  </nav>
+  </div>
 
   <!-- Hero Section with New Design -->
   <section class="relative min-h-screen flex items-center justify-center overflow-hidden w-full">
@@ -115,99 +120,83 @@
     <!-- Content -->
     <div class="relative z-10 w-full">
       <div class="min-h-screen flex flex-col items-center justify-center">
-        <main id="main-content" class="w-full max-w-7xl z-10 relative px-4 sm:px-6 lg:px-8 py-8 lg:py-12 pt-20 sm:pt-24 lg:pt-32" role="main">
+        <main id="main-content" class="w-full max-w-7xl z-10 relative px-4 sm:px-6 lg:px-8 pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-32 lg:pb-20" role="main">
 
-          <!-- Logo/Brand Header Component -->
-          <div class="flex items-center justify-center mb-12 animate-fade-in-up">
-            <div class="p-2 sm:p-3 bg-slate-800 rounded-xl border border-slate-700 mr-3 sm:mr-4 glass-effect shadow-elegant hover-scale glow-on-hover">
-              <svg class="h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 text-primary icon-rotate" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <div class="text-center">
-              <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white font-heading animate-slide-in-left delay-200">
-                Vega AI
-              </h1>
-              <p class="text-primary text-xs sm:text-sm md:text-base font-medium animate-slide-in-right delay-300">
-                Your Self-Hosted Job Search Assistant
-              </p>
-            </div>
-          </div>
 
-          <!-- Hero Section Pattern -->
-          <div class="mb-12 text-center">
-            <h2 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-4 sm:mb-6 text-gray-200 animate-fade-in-up delay-300">
+          <!-- Hero Section Content -->
+          <div class="text-center mb-8 sm:mb-12">
+            <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-white font-heading">
               Stop losing track of applications
-            </h2>
-            <p class="text-gray-300 text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 max-w-3xl mx-auto animate-fade-in-up delay-500 px-2 sm:px-0">
-              Track applications, score job matches, and generate professional documents. All on your own server, completely free.
+            </h1>
+            <p class="text-gray-300 text-sm sm:text-base mb-4 sm:mb-6 max-w-2xl mx-auto px-4 sm:px-6 lg:px-0 leading-relaxed">
+              Track applications, score job matches, and generate professional documents. Self-hosted on your own server, completely free.
             </p>
 
             <!-- Feature highlights -->
-            <div class="flex flex-wrap gap-3 sm:gap-6 text-xs sm:text-sm justify-center mb-6 sm:mb-8 animate-fade-in-up delay-700 px-2 sm:px-0">
-              <div class="flex items-center text-gray-400 hover:text-gray-200 transition-colors duration-300">
-                <svg class="h-5 w-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-2xl mx-auto mb-6 sm:mb-8 animate-fade-in-up delay-300">
+              <div class="flex items-center justify-center sm:justify-start text-gray-300 text-xs sm:text-sm">
+                <svg class="h-4 w-4 text-primary mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
-                Know your real chances
+                <span>Know your real chances</span>
               </div>
-              <div class="flex items-center text-gray-400 hover:text-gray-200 transition-colors duration-300">
-                <svg class="h-5 w-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div class="flex items-center justify-center sm:justify-start text-gray-300 text-xs sm:text-sm">
+                <svg class="h-4 w-4 text-primary mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
-                Documents in 30 seconds
+                <span>Documents in 30 seconds</span>
               </div>
-              <div class="flex items-center text-gray-400 hover:text-gray-200 transition-colors duration-300">
-                <svg class="h-5 w-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div class="flex items-center justify-center sm:justify-start text-gray-300 text-xs sm:text-sm">
+                <svg class="h-4 w-4 text-primary mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
-                Everything in one place
+                <span>Everything in one place</span>
               </div>
             </div>
 
             <!-- Primary CTA -->
-            <div class="flex justify-center mb-8 sm:mb-12 px-4 sm:px-0">
-              <a href="#get-started" class="btn-primary inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-primary hover:bg-primary-dark text-white rounded-lg font-medium text-base sm:text-lg transition-all duration-300 focus:ring-2 focus:ring-primary shadow-elegant hover:shadow-elegant-hover">
-                Get Started
+            <div class="flex justify-center mb-8 sm:mb-12 animate-fade-in-up delay-400">
+              <a href="#get-started" class="btn-primary inline-flex items-center justify-center px-6 sm:px-8 py-2.5 sm:py-3 bg-primary hover:bg-primary-dark text-white rounded-lg font-medium text-sm sm:text-base transition-all duration-300 focus:ring-2 focus:ring-primary shadow-lg hover:shadow-xl">
+                Get Started Free
               </a>
             </div>
           </div>
 
           <!-- Key Benefits -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-12 sm:mb-16">
-            <div class="bg-slate-800 rounded-lg p-3 sm:p-4 lg:p-6 border border-slate-700 glass-effect shadow-elegant hover:shadow-elegant-hover hover-scale group animate-on-scroll">
-              <div class="flex items-center justify-between">
-                <div class="min-w-0 flex-1">
-                  <p class="text-gray-400 text-xs sm:text-sm mb-1 truncate">Save time</p>
-                  <p class="text-lg sm:text-xl lg:text-2xl font-bold text-white gradient-text">10+ hours/week</p>
-                </div>
-                <svg class="h-5 w-5 sm:h-6 sm:w-6 lg:h-8 lg:w-8 text-primary opacity-50 flex-shrink-0 ml-2 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-0 animate-fade-in-up delay-500">
+            <div class="bg-slate-800 rounded-lg p-4 sm:p-5 lg:p-6 border border-slate-700 shadow-lg hover:shadow-xl hover-scale group transition-all duration-300">
+              <div class="flex items-center space-x-3">
+                <svg class="h-8 w-8 sm:h-10 sm:w-10 text-primary opacity-70 group-hover:opacity-100 transition-all duration-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
+                <div>
+                  <p class="text-gray-400 text-xs mb-0.5">Save time</p>
+                  <p class="text-base sm:text-lg font-bold text-white">10+ hours<span class="text-gray-400 text-xs">/week</span></p>
+                </div>
               </div>
             </div>
 
-            <div class="bg-slate-800 rounded-lg p-3 sm:p-4 lg:p-6 border border-slate-700 glass-effect shadow-elegant hover:shadow-elegant-hover hover-scale group animate-on-scroll">
-              <div class="flex items-center justify-between">
-                <div class="min-w-0 flex-1">
-                  <p class="text-gray-400 text-xs sm:text-sm mb-1 truncate">Works for</p>
-                  <p class="text-lg sm:text-xl lg:text-2xl font-bold text-white gradient-text">All professions</p>
-                </div>
-                <svg class="h-5 w-5 sm:h-6 sm:w-6 lg:h-8 lg:w-8 text-primary opacity-50 flex-shrink-0 ml-2 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="bg-slate-800 rounded-lg p-4 sm:p-5 lg:p-6 border border-slate-700 shadow-lg hover:shadow-xl hover-scale group transition-all duration-300">
+              <div class="flex items-center space-x-3">
+                <svg class="h-8 w-8 sm:h-10 sm:w-10 text-primary opacity-70 group-hover:opacity-100 transition-all duration-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
+                <div>
+                  <p class="text-gray-400 text-xs mb-0.5">Works for</p>
+                  <p class="text-base sm:text-lg font-bold text-white">All professions</p>
+                </div>
               </div>
             </div>
 
-            <div class="bg-slate-800 rounded-lg p-3 sm:p-4 lg:p-6 border border-slate-700 glass-effect shadow-elegant hover:shadow-elegant-hover hover-scale group animate-on-scroll">
-              <div class="flex items-center justify-between">
-                <div class="min-w-0 flex-1">
-                  <p class="text-gray-400 text-xs sm:text-sm mb-1 truncate">Setup time</p>
-                  <p class="text-lg sm:text-xl lg:text-2xl font-bold text-white gradient-text">< 2 minutes</p>
-                </div>
-                <svg class="h-5 w-5 sm:h-6 sm:w-6 lg:h-8 lg:w-8 text-primary opacity-50 flex-shrink-0 ml-2 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="bg-slate-800 rounded-lg p-4 sm:p-5 lg:p-6 border border-slate-700 shadow-lg hover:shadow-xl hover-scale group transition-all duration-300">
+              <div class="flex items-center space-x-3">
+                <svg class="h-8 w-8 sm:h-10 sm:w-10 text-primary opacity-70 group-hover:opacity-100 transition-all duration-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
+                <div>
+                  <p class="text-gray-400 text-xs mb-0.5">Setup time</p>
+                  <p class="text-base sm:text-lg font-bold text-white">< 2 minutes</p>
+                </div>
               </div>
             </div>
           </div>
@@ -218,16 +207,16 @@
   </section>
 
   <!-- Problem Statement Section -->
-  <section class="py-8 sm:py-12 lg:py-16 bg-slate-800/50 w-full overflow-hidden">
+  <section class="py-12 sm:py-16 lg:py-20 bg-slate-800/50 w-full overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-heading mb-6 tracking-tight text-white">
+        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-heading mb-3 sm:mb-4 tracking-tight text-white">
           The job search is broken
         </h2>
-        <p class="text-sm sm:text-base lg:text-lg text-gray-300 mb-6">
+        <p class="text-sm sm:text-base lg:text-lg text-gray-300 mb-3 sm:mb-4 leading-relaxed">
           Applications scattered across emails and spreadsheets. Hours spent rewriting the same documents. No idea which roles to prioritize.
         </p>
-        <p class="text-sm sm:text-base lg:text-lg text-gray-300">
+        <p class="text-sm sm:text-base lg:text-lg text-gray-300 leading-relaxed">
           Stop losing track of applications. Organize every opportunity, see how well you match each role, and create tailored documents that get responses.
         </p>
       </div>
@@ -235,42 +224,42 @@
   </section>
 
   <!-- Why Self-Hosted Matters Section -->
-  <section class="py-8 sm:py-12 lg:py-16 relative w-full overflow-hidden">
+  <section class="py-12 sm:py-16 lg:py-20 relative w-full overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-heading mb-6 tracking-tight text-white">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-heading mb-3 sm:mb-4 tracking-tight text-white">
           Why Self-Hosted Matters
         </h2>
-        <p class="text-sm sm:text-base lg:text-lg text-gray-300 mb-8">
+        <p class="text-sm sm:text-base lg:text-lg text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
           Your job search reveals salary expectations, career goals, and personal details. Keep that data under your control.
         </p>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-          <div class="text-center">
-            <div class="bg-primary/10 rounded-full p-3 w-12 h-12 flex items-center justify-center mx-auto mb-3">
-              <svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+          <div class="text-center p-4">
+            <div class="bg-primary/10 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <svg class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
             </div>
-            <h3 class="text-lg font-semibold text-white mb-2">Privacy First</h3>
-            <p class="text-sm text-gray-400">Your data never leaves your server</p>
+            <h3 class="text-lg sm:text-xl font-semibold text-white mb-2">Privacy First</h3>
+            <p class="text-sm sm:text-base text-gray-400">Your data never leaves your server</p>
           </div>
-          <div class="text-center">
-            <div class="bg-primary/10 rounded-full p-3 w-12 h-12 flex items-center justify-center mx-auto mb-3">
-              <svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="text-center p-4">
+            <div class="bg-primary/10 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <svg class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
               </svg>
             </div>
-            <h3 class="text-lg font-semibold text-white mb-2">No Subscriptions</h3>
-            <p class="text-sm text-gray-400">Free forever, no hidden costs</p>
+            <h3 class="text-lg sm:text-xl font-semibold text-white mb-2">No Subscriptions</h3>
+            <p class="text-sm sm:text-base text-gray-400">Free forever, no hidden costs</p>
           </div>
-          <div class="text-center">
-            <div class="bg-primary/10 rounded-full p-3 w-12 h-12 flex items-center justify-center mx-auto mb-3">
-              <svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="text-center p-4">
+            <div class="bg-primary/10 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <svg class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
               </svg>
             </div>
-            <h3 class="text-lg font-semibold text-white mb-2">Full Control</h3>
-            <p class="text-sm text-gray-400">Modify, extend, or audit the code</p>
+            <h3 class="text-lg sm:text-xl font-semibold text-white mb-2">Full Control</h3>
+            <p class="text-sm sm:text-base text-gray-400">Modify, extend, or audit the code</p>
           </div>
         </div>
       </div>
@@ -278,53 +267,53 @@
   </section>
 
   <!-- Features Section with New Design -->
-  <section id="features" class="py-8 sm:py-12 lg:py-16 relative w-full overflow-hidden">
+  <section id="features" class="py-12 sm:py-16 lg:py-20 relative w-full overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-6 sm:mb-8 lg:mb-12">
-        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-heading mb-3 tracking-tight text-white">
+      <div class="text-center mb-8 sm:mb-12">
+        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-heading mb-3 sm:mb-4 tracking-tight text-white">
           Organize every opportunity
         </h2>
-        <p class="text-sm sm:text-base lg:text-lg text-gray-400 max-w-2xl mx-auto px-4 sm:px-0">
+        <p class="text-sm sm:text-base lg:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
           See how well you match each role and create tailored documents that get responses
         </p>
       </div>
 
       <!-- Feature Grid Layout -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
-        <div class="bg-slate-800 rounded-lg p-4 sm:p-6 border border-slate-700 hover:border-slate-600 group transition-colors duration-150">
-          <div class="mb-4">
-            <div class="bg-primary/10 rounded-full p-3 w-12 h-12 flex items-center justify-center">
-              <svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        <div class="bg-slate-800 rounded-xl p-5 sm:p-6 border border-slate-700 hover:border-slate-600 group transition-all duration-300 hover:shadow-xl text-center">
+          <div class="mb-6 flex justify-center">
+            <div class="bg-primary/10 rounded-full p-4 w-16 h-16 flex items-center justify-center">
+              <svg class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
             </div>
           </div>
-          <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-primary">Pipeline Tracking</h3>
-          <p class="text-sm text-gray-300">See everything at a glance. Track status from 'Interested' to 'Hired' in one dashboard.</p>
+          <h3 class="text-lg sm:text-xl font-semibold text-white mb-2 group-hover:text-primary transition-colors">Pipeline Tracking</h3>
+          <p class="text-sm sm:text-base text-gray-300 leading-relaxed">See everything at a glance. Track status from 'Interested' to 'Hired' in one dashboard.</p>
         </div>
 
-        <div class="bg-slate-800 rounded-lg p-4 sm:p-6 border border-slate-700 hover:border-slate-600 group transition-colors duration-150">
-          <div class="mb-4">
-            <div class="bg-primary/10 rounded-full p-3 w-12 h-12 flex items-center justify-center">
-              <svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="bg-slate-800 rounded-xl p-5 sm:p-6 border border-slate-700 hover:border-slate-600 group transition-all duration-300 hover:shadow-xl text-center">
+          <div class="mb-6 flex justify-center">
+            <div class="bg-primary/10 rounded-full p-4 w-16 h-16 flex items-center justify-center">
+              <svg class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
           </div>
-          <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-primary">Smart Job Matching</h3>
-          <p class="text-sm text-gray-300">Know your real chances. AI analyzes each role against your profile and shows a compatibility score.</p>
+          <h3 class="text-lg sm:text-xl font-semibold text-white mb-2 group-hover:text-primary transition-colors">Smart Job Matching</h3>
+          <p class="text-sm sm:text-base text-gray-300 leading-relaxed">Know your real chances. AI analyzes each role against your profile and shows a compatibility score.</p>
         </div>
 
-        <div class="bg-slate-800 rounded-lg p-4 sm:p-6 border border-slate-700 hover:border-slate-600 group transition-colors duration-150">
-          <div class="mb-4">
-            <div class="bg-primary/10 rounded-full p-3 w-12 h-12 flex items-center justify-center">
-              <svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="bg-slate-800 rounded-xl p-5 sm:p-6 border border-slate-700 hover:border-slate-600 group transition-all duration-300 hover:shadow-xl text-center">
+          <div class="mb-6 flex justify-center">
+            <div class="bg-primary/10 rounded-full p-4 w-16 h-16 flex items-center justify-center">
+              <svg class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
             </div>
           </div>
-          <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-primary">Application Documents</h3>
-          <p class="text-sm text-gray-300">Professional documents in 30 seconds. Each one customized to the specific job requirements.</p>
+          <h3 class="text-lg sm:text-xl font-semibold text-white mb-2 group-hover:text-primary transition-colors">Application Documents</h3>
+          <p class="text-sm sm:text-base text-gray-300 leading-relaxed">Professional documents in 30 seconds. Each one customized to the specific job requirements.</p>
         </div>
       </div>
 
@@ -332,23 +321,23 @@
   </section>
 
   <!-- How It Works Section with SVG Illustrations -->
-  <section id="how-it-works" class="py-8 sm:py-12 lg:py-16 bg-slate-800/50 w-full overflow-hidden">
+  <section id="how-it-works" class="py-12 sm:py-16 lg:py-20 bg-slate-800/50 w-full overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-6 sm:mb-8 lg:mb-12">
-        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-heading mb-3 tracking-tight text-white">
+      <div class="text-center mb-8 sm:mb-12">
+        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-heading mb-3 sm:mb-4 tracking-tight text-white">
           How It Works
         </h2>
-        <p class="text-sm sm:text-base lg:text-lg text-gray-400 max-w-2xl mx-auto px-4 sm:px-0">
+        <p class="text-sm sm:text-base lg:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
           Get started with one Docker command
         </p>
       </div>
 
       <!-- How It Works Illustrated Steps -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
         <!-- Step 1: Add Jobs -->
-        <div class="bg-slate-800 rounded-lg p-4 sm:p-6 border border-slate-700 hover:border-slate-600 group">
-          <div class="mb-4">
-            <div class="w-full h-32 bg-slate-700 rounded-lg p-4 group-hover:bg-slate-600/50">
+        <div class="bg-slate-800 rounded-xl p-5 sm:p-6 border border-slate-700 hover:border-slate-600 group transition-all duration-300">
+          <div class="mb-6">
+            <div class="w-full h-32 bg-slate-700/50 rounded-lg p-4 group-hover:bg-slate-600/50 transition-colors">
               <svg viewBox="0 0 200 100" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <!-- Browser window -->
                 <rect x="20" y="10" width="160" height="80" rx="4" stroke="#0D9488" stroke-width="2"/>
@@ -366,14 +355,14 @@
               </svg>
             </div>
           </div>
-          <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-primary">1. Deploy in Minutes</h3>
-          <p class="text-sm text-gray-300">One Docker command. No complex setup.</p>
+          <h3 class="text-lg sm:text-xl font-semibold text-white mb-2 group-hover:text-primary transition-colors">1. Deploy in Minutes</h3>
+          <p class="text-sm sm:text-base text-gray-300 leading-relaxed">One Docker command. No complex setup.</p>
         </div>
 
         <!-- Step 2: AI Analysis -->
-        <div class="bg-slate-800 rounded-lg p-4 sm:p-6 border border-slate-700 hover:border-slate-600 group">
-          <div class="mb-4">
-            <div class="w-full h-32 bg-slate-700 rounded-lg p-4 group-hover:bg-slate-600/50">
+        <div class="bg-slate-800 rounded-xl p-5 sm:p-6 border border-slate-700 hover:border-slate-600 group transition-all duration-300">
+          <div class="mb-6">
+            <div class="w-full h-32 bg-slate-700/50 rounded-lg p-4 group-hover:bg-slate-600/50 transition-colors">
               <svg viewBox="0 0 200 100" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <!-- Brain/AI icon -->
                 <circle cx="100" cy="50" r="30" stroke="#0D9488" stroke-width="2" opacity="0.3"/>
@@ -393,14 +382,14 @@
               </svg>
             </div>
           </div>
-          <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-primary">2. Build Your Profile</h3>
-          <p class="text-sm text-gray-300">Enter your experience once. Use it for every application.</p>
+          <h3 class="text-xl sm:text-2xl font-semibold text-white mb-3 group-hover:text-primary transition-colors">2. Build Your Profile</h3>
+          <p class="text-base text-gray-300 leading-relaxed">Enter your experience once. Use it for every application.</p>
         </div>
 
         <!-- Step 3: Apply -->
-        <div class="bg-slate-800 rounded-lg p-4 sm:p-6 border border-slate-700 hover:border-slate-600 group">
-          <div class="mb-4">
-            <div class="w-full h-32 bg-slate-700 rounded-lg p-4 group-hover:bg-slate-600/50">
+        <div class="bg-slate-800 rounded-xl p-5 sm:p-6 border border-slate-700 hover:border-slate-600 group transition-all duration-300">
+          <div class="mb-6">
+            <div class="w-full h-32 bg-slate-700/50 rounded-lg p-4 group-hover:bg-slate-600/50 transition-colors">
               <svg viewBox="0 0 200 100" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <!-- Document -->
                 <rect x="60" y="15" width="80" height="70" rx="4" fill="white" opacity="0.1"/>
@@ -416,65 +405,65 @@
               </svg>
             </div>
           </div>
-          <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-primary">3. Start Tracking</h3>
-          <p class="text-sm text-gray-300">Add jobs via browser extension or manual entry. Stay organized automatically.</p>
+          <h3 class="text-xl sm:text-2xl font-semibold text-white mb-3 group-hover:text-primary transition-colors">3. Start Tracking</h3>
+          <p class="text-base text-gray-300 leading-relaxed">Add jobs via browser extension or manual entry. Stay organized automatically.</p>
         </div>
       </div>
 
       <!-- Status Badge Examples -->
-      <div class="mt-8 sm:mt-12 text-center px-4 sm:px-0">
-        <h4 class="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6">Track Your Application Status</h4>
-        <div class="flex flex-wrap justify-center gap-2 sm:gap-4">
+      <div class="mt-12 sm:mt-16 text-center">
+        <h4 class="text-lg sm:text-xl font-semibold text-white mb-6 sm:mb-8">Track Your Application Status</h4>
+        <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
           <!-- Success/Active -->
-          <span class="px-2 sm:px-3 py-1 sm:py-2 bg-green-500/20 text-green-400 text-xs sm:text-sm font-medium rounded-full">Active</span>
+          <span class="px-4 sm:px-5 py-2 sm:py-2.5 bg-green-500/20 text-green-400 text-sm sm:text-base font-medium rounded-full">Active</span>
           <!-- Primary/Applied -->
-          <span class="px-2 sm:px-3 py-1 sm:py-2 bg-primary/20 text-primary text-xs sm:text-sm font-medium rounded-full">Applied</span>
+          <span class="px-4 sm:px-5 py-2 sm:py-2.5 bg-primary/20 text-primary text-sm sm:text-base font-medium rounded-full">Applied</span>
           <!-- Info/Interested -->
-          <span class="px-2 sm:px-3 py-1 sm:py-2 bg-blue-500/20 text-blue-400 text-xs sm:text-sm font-medium rounded-full">Interested</span>
+          <span class="px-4 sm:px-5 py-2 sm:py-2.5 bg-blue-500/20 text-blue-400 text-sm sm:text-base font-medium rounded-full">Interested</span>
           <!-- Warning/Pending -->
-          <span class="px-2 sm:px-3 py-1 sm:py-2 bg-secondary/20 text-secondary text-xs sm:text-sm font-medium rounded-full">Pending</span>
+          <span class="px-4 sm:px-5 py-2 sm:py-2.5 bg-secondary/20 text-secondary text-sm sm:text-base font-medium rounded-full">Pending</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Browser Extension Section -->
-  <section id="extension" class="py-8 sm:py-12 lg:py-16 relative w-full overflow-hidden">
+  <section id="extension" class="py-12 sm:py-16 lg:py-20 relative w-full overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-6 sm:mb-8 lg:mb-12">
-        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-heading mb-3 tracking-tight text-white">
+      <div class="text-center mb-8 sm:mb-12">
+        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-heading mb-3 sm:mb-4 tracking-tight text-white">
           Optional Browser Extension
         </h2>
-        <p class="text-sm sm:text-base lg:text-lg text-gray-400 max-w-2xl mx-auto px-4 sm:px-0">
+        <p class="text-sm sm:text-base lg:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
           Enhance your Vega AI experience with our browser add-on. One click captures job details directly into your self-hosted platform.
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div class="lg:order-1">
-          <div class="bg-slate-800 rounded-lg p-4 sm:p-6 border border-slate-700">
-            <h3 class="text-lg font-semibold mb-4 flex items-center text-white">
-              <svg class="h-5 w-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="bg-slate-800 rounded-xl p-5 sm:p-6 border border-slate-700">
+            <h3 class="text-lg sm:text-xl font-semibold mb-4 flex items-center text-white">
+              <svg class="h-6 w-6 text-primary mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
               </svg>
               How to Add the Extension
             </h3>
-            <p class="text-sm text-gray-400 mb-4">Already have Vega AI running? Add the browser extension for faster job capture:</p>
-            <ol class="space-y-3 text-sm text-gray-300">
+            <p class="text-base text-gray-400 mb-6">Already have Vega AI running? Add the browser extension for faster job capture:</p>
+            <ol class="space-y-4 text-base text-gray-300">
               <li class="flex items-start">
-                <span class="text-primary font-semibold mr-3 flex-shrink-0">1.</span>
+                <span class="text-primary font-semibold mr-3 flex-shrink-0 text-lg">1.</span>
                 <span>Download extension from <a href="https://github.com/benidevo/vega-extension" class="text-primary hover:text-primary-dark underline transition-colors">GitHub</a></span>
               </li>
               <li class="flex items-start">
-                <span class="text-primary font-semibold mr-3 flex-shrink-0">2.</span>
+                <span class="text-primary font-semibold mr-3 flex-shrink-0 text-lg">2.</span>
                 <span>Install in Chrome/Edge as developer extension</span>
               </li>
               <li class="flex items-start">
-                <span class="text-primary font-semibold mr-3 flex-shrink-0">3.</span>
+                <span class="text-primary font-semibold mr-3 flex-shrink-0 text-lg">3.</span>
                 <span>Connect to your self-hosted Vega AI instance</span>
               </li>
               <li class="flex items-start">
-                <span class="text-primary font-semibold mr-3 flex-shrink-0">4.</span>
+                <span class="text-primary font-semibold mr-3 flex-shrink-0 text-lg">4.</span>
                 <span>Start capturing jobs with one click</span>
               </li>
             </ol>
@@ -493,12 +482,12 @@
                 linkedin.com/jobs
               </div>
             </div>
-            <div class="p-4 bg-slate-900">
-              <div class="bg-slate-800 rounded-lg p-4 border border-slate-700 relative">
-                <h4 class="text-sm font-semibold mb-2 text-white">Software Engineer</h4>
-                <p class="text-gray-400 mb-3 text-xs">TechCorp • Remote</p>
-                <div class="absolute top-3 right-3">
-                  <button class="bg-primary text-white px-3 py-1 rounded text-xs font-medium">
+            <div class="p-6 bg-slate-900">
+              <div class="bg-slate-800 rounded-lg p-6 border border-slate-700 relative">
+                <h4 class="text-base sm:text-lg font-semibold mb-2 text-white">Software Engineer</h4>
+                <p class="text-gray-400 mb-3 text-sm">TechCorp • Remote</p>
+                <div class="absolute top-4 right-4">
+                  <button class="bg-primary text-white px-4 py-2 rounded text-sm font-medium hover:bg-primary-dark transition-colors">
                     + Vega
                   </button>
                 </div>
@@ -511,70 +500,70 @@
   </section>
 
   <!-- Pricing Section -->
-  <section id="pricing" class="py-8 sm:py-12 lg:py-16 bg-slate-800/50 w-full overflow-hidden">
+  <section id="pricing" class="py-12 sm:py-16 lg:py-20 bg-slate-800/50 w-full overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-6 sm:mb-8 lg:mb-12">
-        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-heading mb-3 tracking-tight text-white">
+      <div class="text-center mb-8 sm:mb-12">
+        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-heading mb-3 sm:mb-4 tracking-tight text-white">
           Your Data Stays Yours
         </h2>
-        <p class="text-sm sm:text-base lg:text-lg text-gray-400 max-w-2xl mx-auto px-4 sm:px-0">
-          No tracking, no analytics, no subscription traps. Check the code yourself on GitHub.
+        <p class="text-sm sm:text-base lg:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+          No tracking, no analytics, no subscription traps.
         </p>
       </div>
 
       <div class="max-w-2xl mx-auto">
-        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
-          <div class="text-center mb-6">
-            <h3 class="text-xl font-bold mb-2 text-white">Free Forever</h3>
-            <div class="flex items-baseline justify-center">
-              <span class="text-4xl font-bold text-primary">$0</span>
-              <span class="text-gray-400 ml-2">per month</span>
+        <div class="bg-slate-800 rounded-xl p-6 sm:p-8 border border-slate-700 shadow-xl">
+          <div class="text-center mb-8">
+            <h3 class="text-xl sm:text-2xl font-bold mb-2 text-white">Free Forever</h3>
+            <div class="flex items-baseline justify-center gap-2">
+              <span class="text-4xl sm:text-5xl font-bold text-primary">$0</span>
+              <span class="text-gray-400 text-base">per month</span>
             </div>
           </div>
 
-          <ul class="space-y-3 mb-6">
+          <ul class="space-y-4 mb-8">
             <li class="flex items-start">
-              <svg class="h-5 w-5 text-primary mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-6 w-6 text-primary mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
-              <span class="text-gray-300">Unlimited job tracking</span>
+              <span class="text-gray-300 text-sm sm:text-base">Unlimited job tracking</span>
             </li>
             <li class="flex items-start">
-              <svg class="h-5 w-5 text-primary mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-6 w-6 text-primary mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
-              <span class="text-gray-300">AI-powered job matching</span>
+              <span class="text-gray-300 text-base sm:text-lg">AI-powered job matching</span>
             </li>
             <li class="flex items-start">
-              <svg class="h-5 w-5 text-primary mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-6 w-6 text-primary mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
-              <span class="text-gray-300">Generated cover letters</span>
+              <span class="text-gray-300 text-base sm:text-lg">Generated cover letters</span>
             </li>
             <li class="flex items-start">
-              <svg class="h-5 w-5 text-primary mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-6 w-6 text-primary mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
-              <span class="text-gray-300">Browser extension</span>
+              <span class="text-gray-300 text-base sm:text-lg">Browser extension</span>
             </li>
             <li class="flex items-start">
-              <svg class="h-5 w-5 text-primary mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-6 w-6 text-primary mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
-              <span class="text-gray-300">Complete data ownership</span>
+              <span class="text-gray-300 text-base sm:text-lg">Complete data ownership</span>
             </li>
             <li class="flex items-start">
-              <svg class="h-5 w-5 text-primary mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-6 w-6 text-primary mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
-              <span class="text-gray-300">Runs on less than 50MB RAM</span>
+              <span class="text-gray-300 text-base sm:text-lg">Runs on less than 50MB RAM</span>
             </li>
           </ul>
 
-          <div class="bg-slate-700 rounded-lg p-4 text-center">
-            <p class="text-sm text-gray-300 mb-1">Requirements:</p>
-            <p class="text-white font-medium">Docker + Google Gemini API key</p>
-            <p class="text-xs text-gray-400 mt-2">Deploy on a Raspberry Pi, basic VPS, or old laptop</p>
+          <div class="bg-slate-700 rounded-lg p-6 text-center">
+            <p class="text-base text-gray-300 mb-2">Requirements:</p>
+            <p class="text-white font-medium text-lg">Docker + Google Gemini API key</p>
+            <p class="text-sm text-gray-400 mt-3">Deploy on a Raspberry Pi, basic VPS, or old laptop</p>
           </div>
         </div>
       </div>
@@ -605,10 +594,29 @@
                 1
               </div>
               <div class="flex-1 min-w-0">
-                <h4 class="font-semibold mb-2 text-white">Clone the Repository</h4>
-                <div class="bg-slate-800 rounded-lg p-3 font-mono text-xs sm:text-sm overflow-hidden">
-                  <code class="text-gray-300 block"># Get started with one command</code>
-                  <code class="text-primary block">docker run -d --name vega-ai -p 8080:8080 ghcr.io/benidevo/vega-ai:latest</code>
+                <h4 class="font-semibold mb-2 text-white">Create Configuration</h4>
+                <p class="text-gray-400 text-xs mb-2">Create a .env file with your settings:</p>
+                <div class="bg-slate-800 rounded-lg p-3 font-mono text-xs overflow-x-auto relative group">
+                  <code class="text-gray-500 block"># Required</code>
+                  <code class="text-gray-300 block">TOKEN_SECRET=your-secure-jwt-secret-here</code>
+                  <code class="text-gray-300 block">GEMINI_API_KEY=your-gemini-api-key</code>
+                  <code class="text-gray-300 block"></code>
+                  <code class="text-gray-500 block"># Recommended: first-time admin setup</code>
+                  <code class="text-gray-300 block">CREATE_ADMIN_USER=true</code>
+                  <code class="text-gray-300 block">ADMIN_USERNAME=admin</code>
+                  <code class="text-gray-300 block">ADMIN_PASSWORD=your-secure-password</code>
+                  <code class="text-gray-300 block">ADMIN_EMAIL=admin@yourdomain.com</code>
+                  <button onclick="copyToClipboard(this)" data-text="# Required
+TOKEN_SECRET=your-secure-jwt-secret-here
+GEMINI_API_KEY=your-gemini-api-key
+
+# Recommended: first-time admin setup
+CREATE_ADMIN_USER=true
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=your-secure-password
+ADMIN_EMAIL=admin@yourdomain.com" class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-xs text-gray-300">
+                    Copy
+                  </button>
                 </div>
               </div>
             </div>
@@ -619,9 +627,18 @@
                 2
               </div>
               <div class="flex-1 min-w-0">
-                <h4 class="font-semibold mb-2 text-white">Access Vega</h4>
-                <div class="bg-slate-800 rounded-lg p-3 font-mono text-xs sm:text-sm overflow-hidden">
-                  <code class="text-gray-300 block">That's it. Visit localhost:8080 to start.</code>
+                <h4 class="font-semibold mb-2 text-white">Run with Docker</h4>
+                <p class="text-gray-400 text-xs mb-2">Start Vega with persistent data storage:</p>
+                <div class="bg-slate-800 rounded-lg p-3 font-mono text-xs overflow-x-auto relative group">
+                  <code class="text-primary block">docker run -d \</code>
+                  <code class="text-primary block">  --name vega-ai \</code>
+                  <code class="text-primary block">  -p 8080:8080 \</code>
+                  <code class="text-primary block">  -v vega-data:/app/data \</code>
+                  <code class="text-primary block">  --env-file .env \</code>
+                  <code class="text-primary block">  ghcr.io/benidevo/vega-ai:latest</code>
+                  <button onclick="copyToClipboard(this)" data-text="docker run -d --name vega-ai -p 8080:8080 -v vega-data:/app/data --env-file .env ghcr.io/benidevo/vega-ai:latest" class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-xs text-gray-300">
+                    Copy
+                  </button>
                 </div>
               </div>
             </div>
@@ -632,21 +649,8 @@
                 3
               </div>
               <div class="flex-1 min-w-0">
-                <h4 class="font-semibold mb-2 text-white">Add Your API Key</h4>
-                <div class="bg-slate-800 rounded-lg p-3 font-mono text-xs sm:text-sm overflow-hidden">
-                  <code class="text-gray-300 block">Configure Google Gemini API key in settings</code>
-                </div>
-              </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="flex">
-              <div class="bg-primary rounded-full p-2 w-10 h-10 flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">
-                4
-              </div>
-              <div class="flex-1 min-w-0">
-                <h4 class="font-semibold mb-2 text-white">Start Tracking Jobs</h4>
-                <p class="text-gray-400 text-sm">Install browser extension or add jobs manually. Build your profile once, use everywhere.</p>
+                <h4 class="font-semibold mb-2 text-white">Access & Configure</h4>
+                <p class="text-gray-400 text-sm">Visit <code class="text-primary">http://localhost:8080</code> and log in with your admin credentials. Your data is safely stored in a Docker volume.</p>
               </div>
             </div>
           </div>
@@ -668,19 +672,13 @@
                 <svg class="h-4 w-4 text-primary mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                Docker & Docker Compose
+                Docker
               </li>
               <li class="flex items-center">
                 <svg class="h-4 w-4 text-primary mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                Google Gemini API key (for AI features)
-              </li>
-              <li class="flex items-center">
-                <svg class="h-4 w-4 text-primary mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                Google OAuth credentials (optional)
+                Google Gemini API key (free tier available)
               </li>
               <li class="flex items-center">
                 <svg class="h-4 w-4 text-primary mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -728,7 +726,7 @@
 
 
   <!-- FAQ Section -->
-  <section class="py-8 sm:py-12 lg:py-16 bg-slate-800/50 w-full overflow-hidden">
+  <section id="faq" class="py-12 sm:py-16 lg:py-20 bg-slate-800/50 w-full overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-8 sm:mb-12">
         <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-heading mb-3 tracking-tight text-white">
@@ -854,6 +852,7 @@
           <a href="#how-it-works" class="text-gray-400 hover:text-primary transition-colors text-sm">How It Works</a>
           <a href="#extension" class="text-gray-400 hover:text-primary transition-colors text-sm">Extension</a>
           <a href="#pricing" class="text-gray-400 hover:text-primary transition-colors text-sm">Pricing</a>
+          <a href="#faq" class="text-gray-400 hover:text-primary transition-colors text-sm">FAQ</a>
         </div>
         <div class="flex justify-center space-x-4 mb-6">
           <a href="https://github.com/benidevo/vega" class="text-gray-400 hover:text-primary transition-colors">
@@ -871,5 +870,22 @@
 
   <!-- Custom JavaScript -->
   <script src="assets/js/script.js"></script>
+  <script>
+    // Copy to clipboard functionality
+    function copyToClipboard(button) {
+      const text = button.getAttribute('data-text');
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.textContent;
+        button.textContent = 'Copied!';
+        button.classList.add('bg-green-600');
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.classList.remove('bg-green-600');
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  </script>
 </body>
 </html>

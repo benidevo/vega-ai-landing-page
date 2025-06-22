@@ -62,6 +62,28 @@ tailwind.config = {
   }
 }
 
+// Global mobile menu toggle function
+function toggleMobileMenu() {
+  const mobileMenu = document.getElementById('mobile-menu');
+  const isActive = mobileMenu.classList.contains('active');
+  
+  mobileMenu.classList.toggle('active');
+  document.body.style.overflow = !isActive ? 'hidden' : '';
+
+  // Prevent scrolling on iOS
+  if (!isActive) {
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.top = `-${window.scrollY}px`;
+  } else {
+    const scrollY = document.body.style.top;
+    document.body.style.position = '';
+    document.body.style.width = '';
+    document.body.style.top = '';
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+  }
+}
+
 // DOM Ready Handler - Initialize all functionality when page loads
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -71,31 +93,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileMenuLinks = mobileMenu.querySelectorAll('a[href^="#"]');
 
-  function toggleMobileMenu() {
-    mobileMenu.classList.toggle('active');
-    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-
-    // Prevent scrolling on iOS
-    if (mobileMenu.classList.contains('active')) {
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-    } else {
-      document.body.style.position = '';
-      document.body.style.width = '';
-    }
-  }
-
-  // Make toggleMobileMenu globally available for onclick handlers
-  window.toggleMobileMenu = toggleMobileMenu;
-
   mobileMenuButton.addEventListener('click', toggleMobileMenu);
   mobileMenuClose.addEventListener('click', toggleMobileMenu);
 
   // Close mobile menu when clicking on links
   mobileMenuLinks.forEach(link => {
     link.addEventListener('click', () => {
-      mobileMenu.classList.remove('active');
-      document.body.style.overflow = '';
+      toggleMobileMenu();
     });
   });
 
