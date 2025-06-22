@@ -7,6 +7,7 @@ import (
 	"os"
 	"time"
 
+	"google.golang.org/api/option"
 	"google.golang.org/api/sheets/v4"
 )
 
@@ -65,8 +66,11 @@ func NewGoogleSheetsService(ctx context.Context, config *SheetsConfig) (*GoogleS
 		config.SheetName = "Vega AI Feedback" // default sheet name
 	}
 
-	service, err := sheets.NewService(ctx)
+	service, err := sheets.NewService(ctx,
+		option.WithScopes(sheets.SpreadsheetsScope),
+	)
 	if err != nil {
+		log.Printf("ERROR: Failed to create sheets service - Type: %T, Error: %v", err, err)
 		return nil, fmt.Errorf("failed to create sheets service: %w", err)
 	}
 

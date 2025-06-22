@@ -1,6 +1,6 @@
 module github.com/benidevo/vega-ai-landing-page/api
 
-go 1.24.2
+go 1.23
 
 require (
 	github.com/GoogleCloudPlatform/functions-framework-go v1.9.2
