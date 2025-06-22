@@ -32,21 +32,14 @@ func Application(w http.ResponseWriter, r *http.Request) {
 }
 
 func extractAction(r *http.Request) string {
-	// Debug logging
-	log.Printf("DEBUG: Full URL: %s", r.URL.String())
-	log.Printf("DEBUG: Query params: %v", r.URL.Query())
-	
 	if action := r.URL.Query().Get("action"); action != "" {
-		log.Printf("DEBUG: Found action in query: %s", action)
 		return action
 	}
 
 	path := strings.TrimPrefix(r.URL.Path, "/")
 	if path != "" {
-		log.Printf("DEBUG: Found action in path: %s", path)
 		return path
 	}
 
-	log.Printf("DEBUG: No action found, returning empty string")
 	return ""
 }
