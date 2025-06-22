@@ -704,11 +704,11 @@ ADMIN_EMAIL=admin@yourdomain.com" class="absolute top-2 right-2 opacity-0 group-
                 <div class="bg-slate-800 rounded-lg p-3 font-mono text-xs overflow-x-auto relative group">
                   <code class="text-primary block">docker run -d \</code>
                   <code class="text-primary block">  --name vega-ai \</code>
-                  <code class="text-primary block">  -p 8080:8080 \</code>
+                  <code class="text-primary block">  -p 8765:8765 \</code>
                   <code class="text-primary block">  -v vega-data:/app/data \</code>
                   <code class="text-primary block">  --env-file .env \</code>
                   <code class="text-primary block">  ghcr.io/benidevo/vega-ai:latest</code>
-                  <button onclick="copyToClipboard(this)" data-text="docker run -d --name vega-ai -p 8080:8080 -v vega-data:/app/data --env-file .env ghcr.io/benidevo/vega-ai:latest" class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-xs text-gray-300">
+                  <button onclick="copyToClipboard(this)" data-text="docker run -d --name vega-ai -p 8765:8765 -v vega-data:/app/data --env-file .env ghcr.io/benidevo/vega-ai:latest" class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-xs text-gray-300">
                     Copy
                   </button>
                 </div>
@@ -722,7 +722,7 @@ ADMIN_EMAIL=admin@yourdomain.com" class="absolute top-2 right-2 opacity-0 group-
               </div>
               <div class="flex-1 min-w-0">
                 <h4 class="font-semibold mb-2 text-white">Access & Configure</h4>
-                <p class="text-gray-400 text-sm">Visit <code class="text-primary">http://localhost:8080</code> and log in with your admin credentials. Your data is safely stored in a Docker volume.</p>
+                <p class="text-gray-400 text-sm">Visit <code class="text-primary">http://localhost:8765</code> and log in with your admin credentials. Your data is safely stored in a Docker volume.</p>
               </div>
             </div>
           </div>
