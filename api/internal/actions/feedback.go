@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strconv"
+	"strings"
 	"time"
 )
 
@@ -33,10 +35,39 @@ func HandleFeedback(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var req FeedbackRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		log.Printf("ERROR: Failed to decode JSON request: %v", err)
-		http.Error(w, "Invalid JSON", http.StatusBadRequest)
-		return
+	contentType := r.Header.Get("Content-Type")
+
+	if strings.Contains(contentType, "application/json") {
+		// Handle JSON request (from manual fetch calls)
+		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+			log.Printf("ERROR: Failed to decode JSON request: %v", err)
+			http.Error(w, "Invalid JSON", http.StatusBadRequest)
+			return
+		}
+	} else {
+		if err := r.ParseForm(); err != nil {
+			log.Printf("ERROR: Failed to parse form data: %v", err)
+			http.Error(w, "Invalid form data", http.StatusBadRequest)
+			return
+		}
+
+		// Convert form data to struct
+		setupDifficulty := 5 // default value
+		if val := r.FormValue("setupDifficulty"); val != "" {
+			if parsed, err := strconv.Atoi(val); err == nil {
+				setupDifficulty = parsed
+			}
+		}
+
+		req = FeedbackRequest{
+			Helpfulness:        r.FormValue("helpfulness"),
+			SetupDifficulty:    setupDifficulty,
+			DocsQuality:        r.FormValue("docsQuality"),
+			SetupIssues:        r.FormValue("setupIssues"),
+			AdditionalFeedback: r.FormValue("additionalFeedback"),
+			Email:              r.FormValue("email"),
+			Source:             r.FormValue("source"),
+		}
 	}
 
 	if req.Helpfulness == "" {

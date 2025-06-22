@@ -1,10 +1,10 @@
 package internal
 
 import (
-	"github.com/benidevo/vega-ai-landing-page/internal/actions"
 	"log"
 	"net/http"
 	"strings"
+	"vega.ai/landing-api/internal/actions"
 )
 
 // Application is an HTTP handler that manages CORS headers and routes requests
