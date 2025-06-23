@@ -13,7 +13,7 @@ env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   REGION: us-central1
   GOOGLE_SPREADSHEET_ID: "1bo_4rjBx-v1pDqB21-L0Pfv8z0c0fAN0S41HF5KAUDI"
-  GOOGLE_SHEET_NAME: "Vega AI Feedback"
+  GOOGLE_SHEET_NAME: "VegaAIFeedback"
   GCP_SERVICE_ACCOUNT_EMAIL: "vega-feedback-sheets@vega-ai-live.iam.gserviceaccount.com"
 
 jobs:
