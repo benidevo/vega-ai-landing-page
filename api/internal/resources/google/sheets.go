@@ -109,8 +109,7 @@ func (g *GoogleSheetsService) AppendFeedback(ctx context.Context, feedback *Feed
 		Values: [][]any{values},
 	}
 
-	// Append to sheet
-	range_ := fmt.Sprintf("%s!A:H", g.sheetName)
+	range_ := fmt.Sprintf("'%s'!A:H", g.sheetName)
 	appendCall := g.service.Spreadsheets.Values.Append(g.spreadsheetID, range_, valueRange)
 	appendCall.ValueInputOption("RAW")
 	appendCall.InsertDataOption("INSERT_ROWS")
@@ -126,7 +125,8 @@ func (g *GoogleSheetsService) AppendFeedback(ctx context.Context, feedback *Feed
 
 // ensureHeaders ensures the sheet has proper headers
 func (g *GoogleSheetsService) ensureHeaders(ctx context.Context) error {
-	range_ := fmt.Sprintf("%s!A1:H1", g.sheetName)
+	// Sheet names with spaces must be wrapped in single quotes
+	range_ := fmt.Sprintf("'%s'!A1:H1", g.sheetName)
 	response, err := g.service.Spreadsheets.Values.Get(g.spreadsheetID, range_).Context(ctx).Do()
 	if err != nil {
 		return fmt.Errorf("failed to check existing headers: %w", err)
