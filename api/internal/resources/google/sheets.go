@@ -7,6 +7,8 @@ import (
 	"os"
 	"time"
 
+	"golang.org/x/oauth2/google"
+	"google.golang.org/api/impersonate"
 	"google.golang.org/api/option"
 	"google.golang.org/api/sheets/v4"
 )
@@ -66,9 +68,53 @@ func NewGoogleSheetsService(ctx context.Context, config *SheetsConfig) (*GoogleS
 		config.SheetName = "Vega AI Feedback" // default sheet name
 	}
 
-	service, err := sheets.NewService(ctx,
-		option.WithScopes(sheets.SpreadsheetsScope),
-	)
+	// Try multiple authentication methods
+	var service *sheets.Service
+	var err error
+
+	// Method 1: Try with impersonation if service account is specified
+	serviceAccountEmail := os.Getenv("GCP_SERVICE_ACCOUNT_EMAIL")
+	if serviceAccountEmail == "" {
+		serviceAccountEmail = "vega-feedback-sheets@vega-ai-live.iam.gserviceaccount.com"
+	}
+
+	// First, try to get default credentials
+	creds, err := google.FindDefaultCredentials(ctx, sheets.SpreadsheetsScope)
+	if err != nil {
+		log.Printf("WARNING: Could not find default credentials: %v", err)
+		// Try without credentials (will use metadata service in Cloud Run)
+		service, err = sheets.NewService(ctx, option.WithScopes(sheets.SpreadsheetsScope))
+	} else {
+		// If we have credentials, try impersonation
+		ts, impersonateErr := impersonate.CredentialsTokenSource(ctx, impersonate.CredentialsConfig{
+			TargetPrincipal: serviceAccountEmail,
+			Scopes:          []string{sheets.SpreadsheetsScope},
+			Delegates:       []string{},
+		}, option.WithCredentials(creds))
+
+		if impersonateErr != nil {
+			log.Printf("WARNING: Impersonation failed, falling back to default credentials: %v", impersonateErr)
+			// Fall back to using the credentials directly
+			service, err = sheets.NewService(ctx,
+				option.WithCredentials(creds),
+				option.WithScopes(sheets.SpreadsheetsScope),
+			)
+			if err != nil {
+				log.Printf("ERROR: Failed to create sheets service with default credentials - Type: %T, Error: %v", err, err)
+				return nil, fmt.Errorf("failed to create sheets service with default credentials: %w", err)
+			}
+			log.Printf("INFO: Successfully created sheets service with default credentials")
+		} else {
+			// Use impersonated credentials
+			service, err = sheets.NewService(ctx, option.WithTokenSource(ts))
+			if err != nil {
+				log.Printf("ERROR: Failed to create sheets service with impersonation - Type: %T, Error: %v", err, err)
+				return nil, fmt.Errorf("failed to create sheets service with impersonation: %w", err)
+			}
+			log.Printf("INFO: Successfully created sheets service with impersonation for account")
+		}
+	}
+
 	if err != nil {
 		log.Printf("ERROR: Failed to create sheets service - Type: %T, Error: %v", err, err)
 		return nil, fmt.Errorf("failed to create sheets service: %w", err)
