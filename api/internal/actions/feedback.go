@@ -3,7 +3,6 @@ package actions
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 	"strconv"
@@ -84,11 +83,13 @@ func HandleFeedback(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
+		setupIssues := strings.Join(r.Form["setupIssues"], ", ")
+
 		req = FeedbackRequest{
 			Helpfulness:        r.FormValue("helpfulness"),
 			SetupDifficulty:    setupDifficulty,
 			DocsQuality:        r.FormValue("docsQuality"),
-			SetupIssues:        r.FormValue("setupIssues"),
+			SetupIssues:        setupIssues,
 			AdditionalFeedback: r.FormValue("additionalFeedback"),
 			Email:              r.FormValue("email"),
 			Source:             r.FormValue("source"),
@@ -105,7 +106,7 @@ func HandleFeedback(w http.ResponseWriter, r *http.Request) {
 		req.Source = "landing-page"
 	}
 
-	log.Printf("INFO: Processing feedback from source: %s, email: %s", req.Source, req.Email)
+	log.Printf("INFO: Processing feedback from source:  %s", req.Source)
 
 	if sheetsService != nil {
 		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
@@ -126,8 +127,6 @@ func HandleFeedback(w http.ResponseWriter, r *http.Request) {
 	} else {
 		log.Printf("WARNING: Google Sheets service not available, feedback not stored in sheets")
 	}
-
-	fmt.Printf("Feedback received at %s: %+v\n", time.Now().Format(time.RFC3339), req)
 
 	log.Printf("INFO: Feedback processed successfully")
 
