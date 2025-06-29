@@ -705,15 +705,13 @@ ADMIN_PASSWORD=your-secure-password" class="absolute top-2 right-2 opacity-0 gro
                 <h4 class="font-semibold mb-2 text-white">Run with Docker</h4>
                 <p class="text-gray-400 text-xs mb-2">Navigate to your vega-ai folder and start Vega with persistent data storage:</p>
                 <div class="bg-slate-800 rounded-lg p-3 font-mono text-xs overflow-x-auto relative group">
-                  <code class="text-primary block">cd vega-ai</code>
                   <code class="text-primary block">docker run --pull always -d \</code>
                   <code class="text-primary block">  --name vega-ai \</code>
                   <code class="text-primary block">  -p 8765:8765 \</code>
                   <code class="text-primary block">  -v vega-data:/app/data \</code>
                   <code class="text-primary block">  --env-file config \</code>
                   <code class="text-primary block">  ghcr.io/benidevo/vega-ai:latest</code>
-                  <button onclick="copyToClipboard(this)" data-text="cd vega-ai
-docker run --pull always -d --name vega-ai -p 8765:8765 -v vega-data:/app/data --env-file config ghcr.io/benidevo/vega-ai:latest
+                  <button onclick="copyToClipboard(this)" data-text="docker run --pull always -d --name vega-ai -p 8765:8765 -v vega-data:/app/data --env-file config ghcr.io/benidevo/vega-ai:latest
 " class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-xs text-gray-300">
                     Copy
                   </button>
@@ -975,6 +973,19 @@ docker run --pull always -d --name vega-ai -p 8765:8765 -v vega-data:/app/data -
             </summary>
             <div class="px-4 sm:px-6 pb-4 sm:pb-6">
               <p class="text-gray-300 text-sm sm:text-base">Vega AI uses less than 50MB of RAM, making it incredibly lightweight. You can run it alongside your other applications without any performance impact. It even works on older computers, Raspberry Pis, or a $5/month VPS if you prefer remote access.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 11 -->
+          <details class="bg-slate-800 rounded-lg border border-slate-700 group">
+            <summary class="flex items-center justify-between p-4 sm:p-6 cursor-pointer list-none">
+              <h3 class="text-base sm:text-lg font-semibold text-white pr-4">How do I reset my admin password?</h3>
+              <svg class="h-5 w-5 text-primary transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-4 sm:px-6 pb-4 sm:pb-6">
+              <p class="text-gray-300 text-sm sm:text-base">Stop the container, update your password in the config file, then add <code class="bg-slate-700 text-primary px-1 py-0.5 rounded text-xs font-mono">RESET_ADMIN_PASSWORD=true</code> and restart.</p>
             </div>
           </details>
         </div>
