@@ -54,19 +54,35 @@ body {
   }
 }
 
+/* Fluid Typography */
+:root {
+  /* Fluid typography scale using clamp() for smooth scaling */
+  --font-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --font-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --font-base: clamp(0.9375rem, 0.85rem + 0.4375vw, 1.125rem);
+  --font-lg: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+  --font-xl: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
+  --font-2xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.875rem);
+  --font-3xl: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
+  --font-4xl: clamp(1.75rem, 1.5rem + 1.25vw, 2.5rem);
+  --font-5xl: clamp(2rem, 1.7rem + 1.5vw, 3rem);
+  --font-6xl: clamp(2.25rem, 1.9rem + 1.75vw, 3.75rem);
+}
+
+/* Apply fluid typography with consistent line heights */
+.text-xs { font-size: var(--font-xs); line-height: 1.5; }
+.text-sm { font-size: var(--font-sm); line-height: 1.5; }
+.text-base { font-size: var(--font-base); line-height: 1.6; }
+.text-lg { font-size: var(--font-lg); line-height: 1.5; }
+.text-xl { font-size: var(--font-xl); line-height: 1.4; }
+.text-2xl { font-size: var(--font-2xl); line-height: 1.3; }
+.text-3xl { font-size: var(--font-3xl); line-height: 1.2; }
+.text-4xl { font-size: var(--font-4xl); line-height: 1.1; }
+.text-5xl { font-size: var(--font-5xl); line-height: 1.1; }
+.text-6xl { font-size: var(--font-6xl); line-height: 1; }
+
 /* Small mobile devices */
 @media (max-width: 480px) {
-  /* Mobile-first typography scale - increased sizes */
-  .text-xs { font-size: 0.8125rem; line-height: 1.5; }
-  .text-sm { font-size: 0.875rem; line-height: 1.5; }
-  .text-base { font-size: 0.9375rem; line-height: 1.6; }
-  .text-lg { font-size: 1rem; line-height: 1.5; }
-  .text-xl { font-size: 1.125rem; line-height: 1.4; }
-  .text-2xl { font-size: 1.25rem; line-height: 1.3; }
-  .text-3xl { font-size: 1.5rem; line-height: 1.2; }
-  .text-4xl { font-size: 1.75rem; line-height: 1.1; }
-  .text-5xl { font-size: 2rem; line-height: 1.1; }
-  .text-6xl { font-size: 2.25rem; line-height: 1; }
 
   /* Consistent spacing */
   .gap-2 { gap: 0.5rem; }
@@ -566,11 +582,22 @@ html {
   transform: translateY(0);
 }
 
-/* Mobile-specific fixes */
+/* Respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up,
+  .hover-scale,
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile-specific optimizations */
 @media (max-width: 768px) {
-  /* Disable animations on mobile for better performance */
+  /* Simplified animations on mobile for better performance */
   .animate-fade-in-up {
-    animation: none !important;
+    animation-duration: 0.3s !important;
     opacity: 1 !important;
     transform: none !important;
   }
