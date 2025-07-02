@@ -1,7 +1,7 @@
 {
-  "name": "Vega AI • Job Search Assistant",
+  "name": "Vega AI • Track Jobs & Create Resumes",
   "short_name": "Vega AI",
-  "description": "Free self-hosted job search assistant with AI-powered matching and document generation",
+  "description": "Track job applications, see which roles match best, and create resumes and cover letters that lead to interviews.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f172a",
